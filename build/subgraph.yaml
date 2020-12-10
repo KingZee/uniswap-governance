@@ -1,6 +1,6 @@
 specVersion: 0.0.2
 schema:
-  file: ./schema.graphql
+  file: schema.graphql
 dataSources:
   - kind: ethereum/contract
     name: GovernorAlpha
@@ -19,9 +19,9 @@ dataSources:
         - Account
       abis:
         - name: GovernorAlpha
-          file: ./abis/GovernorAlpha.json
+          file: GovernorAlpha\abis\GovernorAlpha.json
         - name: Uni
-          file: ./abis/Uni.json
+          file: GovernorAlpha\abis\Uni.json
       eventHandlers:
         - event: ProposalCanceled(uint256)
           handler: handleProposalCanceled
@@ -33,7 +33,7 @@ dataSources:
           handler: handleProposalQueued
         - event: VoteCast(address,uint256,bool,uint256)
           handler: handleVoteCast
-      file: ./src/mapping.ts
+      file: GovernorAlpha\GovernorAlpha.wasm
   - kind: ethereum/contract
     name: Uni
     network: mainnet
@@ -49,12 +49,12 @@ dataSources:
         - HonestlyIDontThinkThisIsReallyNecessaryEntity
       abis:
         - name: GovernorAlpha
-          file: ./abis/GovernorAlpha.json
+          file: Uni\abis\GovernorAlpha.json
         - name: Uni
-          file: ./abis/Uni.json
+          file: Uni\abis\Uni.json
       eventHandlers:
         - event: DelegateChanged(indexed address,indexed address,indexed address)
           handler: handleDelegateChanged
         - event: DelegateVotesChanged(indexed address,uint256,uint256)
           handler: handleDelegateVotesChanged
-      file: ./src/mapping.ts
+      file: GovernorAlpha\GovernorAlpha.wasm
